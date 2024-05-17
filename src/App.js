@@ -16,13 +16,14 @@ function App() {
   const[selectcategory,setselectcategory]=useState(null)
   //input filter
   const [query,setquery]=useState("")
-  const handleputchange=event=>{
+  const handleputchange=(event)=>{
     setquery(event.target.value)
   }
 
   const filtereditems = Product.filter(Product =>
-    Product.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1
-  );
+    Product.title.toLowerCase().includes(query.toLowerCase())) 
+  
+  
   
 
   //Radio filer
@@ -73,7 +74,7 @@ function App() {
   return (
     <>
       <Leftside handlechange={handlechange}/>
-      <Nav query={query} handleputchange={handleputchange} />
+      <Nav  handleputchange={handleputchange} />
       <Recomended handleclick={handleclick} />
       <Products result={result} />
   
